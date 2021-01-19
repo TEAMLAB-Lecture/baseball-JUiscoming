@@ -261,35 +261,36 @@ def is_no(one_more_input):
 def main():
     print("Play Baseball")
     # ===Modify codes below=============
-    while True:
+    def game_loop():
+        # 1. Random number 생성
         random_number = get_not_duplicated_three_digit_number()
-        print("Random Number is : ", random_number, end = '')
-        while True:
-            # 1. 사용자 숫자 입력
-            while True:
-                user_input = input('Input guess number : ')
+        print("Random Number is : ", random_number)
+        while True: # Strike 체크 loop
+            while True: # user 입력 loop
+                user_input = input('Input guess number : ') # 2. user 입력
                 if user_input == '0':
-                    break
+                    return False
                 elif not is_validated_number(user_input):
-                    print('Wrong Input, Input again', end = '')
+                    print('Wrong Input, Input again')
                 else:
                     break
-            if user_input == '0':
-                break
-            # 2. 스트라이크, 볼 측정
-            result = get_strikes_or_ball(user_input, random_number)
-            print(f'Strikes : {result[0]} , Balls : {result[1]}', end = '')
+                
+            result = get_strikes_or_ball(user_input, random_number) # 3. strike 검사
+            print(f'Strikes : {result[0]} , Balls : {result[1]}')
             if result[0] == 3:
                 break
-        if user_input == '0':
-            break
-        while True:
+        # 4. 3 strike인 경우
+        while True: # 재수행 여부 loop
             regame = input('You win, one more(Y/N)?')
-            if is_no(regame) or is_yes(regame):
-                break
+            if is_no(regame):
+                return False
+            elif is_yes(regame):
+                return True
             else:
-                print('Wrong Input, Input again', end = '')
-        if is_no(regame) or regame == '0':
+                print('Wrong Input, Input again')
+                
+    while True:
+        if not game_loop():
             break
     # ==================================
     print("Thank you for using this program")
