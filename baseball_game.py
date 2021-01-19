@@ -279,11 +279,11 @@ def main():
                 break
         while True:
             regame = input('You win, one more(Y/N)?')
-            if is_no(regame) or is_yes(regame):
+            if is_no(regame) or is_yes(regame) or regame == '0':
                 break
             else:
                 print('Wrong Input, Input again')
-        if is_no(regame):
+        if is_no(regame) or regame == '0':
             break
     # ==================================
     print("Thank you for using this program")
