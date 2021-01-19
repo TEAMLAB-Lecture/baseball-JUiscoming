@@ -268,18 +268,24 @@ def main():
             # 1. 사용자 숫자 입력
             while True:
                 user_input = input('Input guess number : ')
-                if not is_validated_number(user_input):
+                if user_input == '0':
+                    break
+                elif not is_validated_number(user_input):
                     print('Wrong Input, Input again', end = '')
                 else:
                     break
+            if user_input == '0':
+                break
             # 2. 스트라이크, 볼 측정
             result = get_strikes_or_ball(user_input, random_number)
             print(f'Strikes : {result[0]} , Balls : {result[1]}', end = '')
             if result[0] == 3:
                 break
+        if user_input == '0':
+            break
         while True:
             regame = input('You win, one more(Y/N)?')
-            if is_no(regame) or is_yes(regame) or regame == '0':
+            if is_no(regame) or is_yes(regame):
                 break
             else:
                 print('Wrong Input, Input again', end = '')
