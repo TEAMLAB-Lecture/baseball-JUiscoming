@@ -267,9 +267,9 @@ def main():
         while True:
             # 1. 사용자 숫자 입력
             while True:
-                user_input = input('Input guess number: ')
+                user_input = input('Input guess number : ')
                 if not is_validated_number(user_input):
-                    print('Wrong Input')
+                    print('Wrong Input, Input again', end = '')
                 else:
                     break
             # 2. 스트라이크, 볼 측정
@@ -282,7 +282,7 @@ def main():
             if is_no(regame) or is_yes(regame) or regame == '0':
                 break
             else:
-                print('Wrong Input, Input again')
+                print('Wrong Input, Input again', end = '')
         if is_no(regame) or regame == '0':
             break
     # ==================================
